@@ -1,3 +1,7 @@
+//const path = require(path);
+//const {getItems} = require('../models/itemsModels');
+//const data = [];
+
 const shopControllers = {
     shop: (req,res) => res.render('pages/tienda/shop',{title:"Shop",stylecss:"styleshop.css"}),   //res.send('Route for Shop View'),
     item: (req,res) => res.render('pages/tienda/item',{title:"Item",stylecss:"index.css"}),   //res.send('Route for find and retrieve an item from an id'),

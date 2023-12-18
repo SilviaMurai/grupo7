@@ -15,6 +15,10 @@ app.use(bodyParser.urlencoded({extended: true}));   // to support URL-encoded bo
 app.use(express.json());                            // to support JSON-encoded bodies
 app.use(express.urlencoded({ extended: true}));      // to support URL-encoded bodies  //express body-parser deprecated
 
+//17/12/2023. para que ande metodo DELETE
+//npm install method-override
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'));
 
 const mainRoutes = require('./src/routes/mainRoutes');
 const adminRoutes = require('./src/routes/adminRoutes');
@@ -41,6 +45,7 @@ app.set('views',path.join(__dirname,'/src/views'));  //app.set('views', __dirnam
 
 app.get("/", (req, res) => {res.render(path.resolve(__dirname, '../views/home'))});  //clase 34
 
+/* NO hizo FALTA
 // Handling Post request 
 app.post('/admin', function(req, res) {
     console.log('POST parameters received are: ',req.body); //llega cuando submit: POST parameters received are:  { busqueda__buscar: 'pokemon' }
@@ -50,6 +55,7 @@ app.post('/admin', function(req, res) {
      //busqueda_buscar: req.body.busqueda_buscar
     //}
 });        
+*/
 
 app.use((req, res, next) => {
     res.status(404).send(`Recurso no encontrado en `+`http://localhost:`+PORT);

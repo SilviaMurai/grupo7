@@ -16,9 +16,19 @@ const deleteItem = async (params) => {
     return await items.deleteItem(params);
    };
 
+const getCategorias = async (params) => {    
+    return await items.getCategorias(params);
+   };
+
+const getLicencias = async (params) => {    
+    return await items.getLicencias(params);
+   };
+
 module.exports = {
  getItems,
  getItemsBuscados,
  getItem,
- deleteItem
+ deleteItem,
+ getCategorias,
+ getLicencias
 }

@@ -59,7 +59,7 @@ const getItem = async (params) => {
    //return rows;
    const response = {
     isError: false,
-    data: rows
+    data: rows[0]        //rows[0] siempre debe encontrar 1
    };
    return response;
   } 
@@ -68,7 +68,7 @@ const getItem = async (params) => {
   //throw err;
    const error = {
     isError: true,
-    message: `Productos NO encontrados: ${err}.`
+    message: `Producto ${params.id} NO encontrado: ${err}.`
    };
    return error;
   } 
@@ -91,6 +91,7 @@ console.log('deleteItem: '+iddel);
       data: rows,
       message: `Item Id ${iddel} eliminado.`
      }
+console.log(response.message);    
     }
     else
     {
@@ -118,10 +119,61 @@ console.log(response);
   }
 }
 
+const getCategorias = async (params) => {
+  try 
+  {
+   const [rows]  = await conn.query('SELECT category.* FROM category;');
+   const response = {
+    isError: false,
+    data: rows
+   };
+   return response;
+  } 
+  catch (err) 
+  {
+   const error = {
+    isError: true,
+    message: `Categorias NO encontradas: ${err}.`
+   };
+   return error;
+  } 
+  finally 
+  {
+   await conn.releaseConnection();
+  }
+}
+
+const getLicencias = async (params) => {
+  try 
+  {
+   const [rows] = await conn.query('SELECT licence.* FROM licence;');
+   const response = {
+    isError: false,
+    data: rows
+   };
+   return response;
+  } 
+  catch (err) 
+  {
+   const error = {
+    isError: true,
+    message: `Licencias NO encontradas: ${err}.`
+   };
+   return error;
+  } 
+  finally 
+  {
+   await conn.releaseConnection();
+  }
+}
+
+
 module.exports = {
  getItems,
  getItemsBuscados,
  getItem,
- deleteItem
+ deleteItem,
+ getCategorias,
+ getLicencias
 }
 

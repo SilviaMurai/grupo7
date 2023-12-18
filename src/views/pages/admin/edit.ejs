@@ -12,50 +12,66 @@
             <div>
                   <label for="categoria">Categoria:</label>
                   <select name="categoria" id="categoria" class="select1" >
+                    <% categorias.forEach((categoria, i) => { %>
+                        <option <% if (item.category_id === categoria.category_id) { %>selected<% } %> value="<%= i+1%>"><%= categoria.category_name%></option>
+                    <% }); %>
+                <!--
                   <option value="">seleccionar</option>
                   <option value="fantasia">Fantasia</option>
                   <option value="anime">Anime</option>
                   <option value="cine">Ciencia ficción</option>
                   <option value="series">Series</option>
+                -->
                   </select>
               </div>
               <div>
                   <label for="licencia">Licencia:</label>
                   <select name="licencia" id="licencia" class="select1">
+                    <% licencias.forEach((licencia, i) => { %>
+                        <option <% if (item.licence_id === licencia.licence_id) { %>selected<% } %> value="<%= i+1%>"><%= licencia.licence_name%></option>
+                    <% }); %>
+                    
+                <!--                    
                       <option value="">seleccionar</option>
                       <option value="naruto">Naruto Shippuden</option>
                       <option value="harrypotter">Harry Potter</option>
                       <option value="starwars">Star wars</option>
                       <option value="pokemon">Pokemon</option>
-                  </select>
+                -->
+            </select>
               </div>
           </div>
       
           <label for="nombre-producto">Nombre del producto:</label>
-          <input type="text" id="nombre-producto" style="width:170px;" placeholder="Kakashi Hatake Shippuden Saga">
-      
+          <input type="text" id="nombre-producto" style="width:170px;"
+                 value="<%=item.product_name%>" placeholder="Kakashi Hatake Shippuden Saga">
       </div>
   
       <div class="textarea">
-          <textarea name="des-producto" id="des-producto" cols="60" rows="10" placeholder="Descripcion del producto"></textarea>        
+          <textarea name="des-producto" id="des-producto" cols="60" rows="10" 
+                    placeholder="Descripcion del producto"><%=item.product_description%></textarea>        
       </div>
    
       <div class="input-group2">
           <div class="hijo1">
               <label for="sku">SKU:</label>
-              <input type="text" id="sku" name="sku" placeholder="SSK111AB001">
+              <input type="text" id="sku" name="sku" 
+                     value="<%=item.product_sku%>" placeholder="SSK111AB001">
           </div>
           <div class="hijo2">    
               <label for="precio">Precio:</label>
-              <input type="text" id="precio" name="precio" placeholder="$ 0.000,">
+              <input type="text" id="precio" name="precio" 
+                     value="<%=item.price%>" placeholder="$ 0.000,">
           </div>
           <div class="hijo3">    
               <label for="stock">Stock:</label>
-              <input type="text" id="stock" name="stock" placeholder="0">
+              <input type="text" id="stock" name="stock" 
+                     value="<%=item.stock%>" placeholder="0">
           </div>    
           <div class="hijo4">
               <label for="descuento">Descuento</label>
-              <input type="text" id="descuento" name="descuento" placeholder="0%">
+              <input type="text" id="descuento" name="descuento" 
+                     value="<%=item.discount%>" placeholder="0%">
           </div>
           <div class="hijo5">
               <label for="cuotas">Cuotas:</label>
