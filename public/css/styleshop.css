@@ -409,3 +409,6 @@ div h3{font-size: 1.4rem;
     color: var(--primary-solid);
   }
   
+  .filtro{
+    display: none;
+  }
